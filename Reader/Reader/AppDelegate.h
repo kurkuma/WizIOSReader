@@ -13,6 +13,7 @@
     ContentsTableViewController * ConTable;
     UINavigationController *ContentsNavi;
     UIWindow * _window;
+  //  UITabBarController *tabBarController;
     
 
 

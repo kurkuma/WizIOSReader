@@ -7,44 +7,102 @@
 //
 
 #import "Cell.h"
+#import "QuartzCore/QuartzCore.h"
+
 
 @implementation Cell
-@synthesize imageView,textLabel,detailTextLabel;
-@synthesize modiDate;
-@synthesize dateForm;
-@synthesize modiLabel;
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+@synthesize imageView,titleLabel,abstractLabel;
+//@synthesize timeLabel;
+@synthesize imageExist;
+ - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-         //[self setFrame:CGRectMake(0, 0, 320, 400)];
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(280, 0, 80, 40)];
-        imageView.backgroundColor = [UIColor grayColor];
-        [self addSubview:imageView];
-        textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 300, 40)];
-         [self.contentView addSubview:textLabel];
-        detailTextLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 40, 200, 60)];
-        detailTextLabel.numberOfLines = 3;
-        detailTextLabel.text = @"hlsajfjfjkioq[jgkjas;jfa";
-         [self.contentView setFrame:CGRectMake(0, 0, 200, 100)];
-        [self.contentView addSubview:detailTextLabel];
+     if (self) {
         
-        //文档修改时间
-        modiDate = [[NSDate alloc]init];
-        dateForm = [[NSDateFormatter alloc]init];
-        [dateForm setDateFormat:@"MM-dd"];
-        modiLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,40, 70, 60)];
-        NSString *temp = [[NSString alloc]init];
-        temp= [dateForm stringFromDate:modiDate];
-        modiLabel.text = [temp stringByAppendingString:@" " ];
-        [self.contentView addSubview:modiLabel];
+
         
-        // Initialization code
+        //添加图片
+        
+        imageView = [[UIImageView alloc]init];
+
+                 
+        
+        //标题
+        
+         titleLabel = [[UILabel alloc]init];
+        
+         titleLabel.font = [UIFont systemFontOfSize:14];
+                 
+        //添加摘要
+        
+        abstractLabel = [[UILabel alloc]init];
+        
+        abstractLabel.numberOfLines =2;
+        
+        abstractLabel.textColor = [UIColor grayColor];
+        
+        abstractLabel.adjustsFontSizeToFitWidth = YES;
+        
+        abstractLabel.highlighted = NO;
+        
+        abstractLabel.textAlignment = NSTextAlignmentLeft;
+        
+        abstractLabel.font = [UIFont systemFontOfSize:12];
+        
+        
+         
+         imageExist = YES;
+
+         //[self layoutOfCell:imageExist];
+                 
+        
+        
+         
+         // Initialization code
     }
     return self;
 }
-  
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+-(void)layoutOfCell:(BOOL)image{
+    if (image)
+    {
+        [self.contentView setFrame:CGRectMake(10, 5,225,60)];
+        [self.imageView setFrame:CGRectMake(245,5,65,65)];
+        imageView.clipsToBounds = YES;
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        //
+        imageView.layer.cornerRadius = 10;
+        //
+        [imageView.layer setBorderWidth:2];
+        //
+        [imageView.layer setBorderColor:(__bridge CGColorRef)([UIColor grayColor])];
+
+
+        [self.titleLabel setFrame:CGRectMake(10, 5,225, 20)];
+        [self.abstractLabel setFrame:CGRectMake(10,25, 225, 45)];
+        [self addSubview:imageView];
+
+      }
+    else
+    {
+        [self.contentView setFrame:CGRectMake(10, 5,[UIScreen mainScreen].bounds.size.width,60)];
+        NSLog(@"没有图片%f",[UIScreen mainScreen].bounds.size.width);
+        [self.titleLabel setFrame:CGRectMake(10, 5,[UIScreen mainScreen].bounds.size.width, 25)];
+        [self.abstractLabel setFrame:CGRectMake(10,25, [UIScreen mainScreen].bounds.size.width, 45)];
+
+    }
+     
+    [self.contentView addSubview:titleLabel];
+    
+    [self.contentView addSubview:abstractLabel];
+
+}
+
+//-(void)redifineSize:(float)width
+//{
+//    [self.contentView setFrame:CGRectMake(10, 5, width, 70)];
+//    [self.abstractLabel setFrame:CGRectMake(10, 40, width, 40)];
+//}
+ - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
 

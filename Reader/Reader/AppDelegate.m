@@ -10,20 +10,22 @@
 
 @implementation AppDelegate
 @synthesize window;
-//Contable;
-//- (void)dealloc
-//{
-//    [_window release];
-//    [super dealloc];
-//}
-
+ 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSLog(@"%f",[UIScreen mainScreen].bounds.size.width);
    // [WizAccountManager defaultManager] groupsForAccount:
     NSLog(@"%@",NSHomeDirectory());
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    ConTable = [[ContentsTableViewController alloc]initWithNibName:@"ContentsTableViewController" bundle:nil];
+    ConTable = [[ContentsTableViewController alloc]initWithStyle:UITableViewStylePlain];
     ContentsNavi = [[UINavigationController alloc]initWithRootViewController:ConTable];
+    ContentsNavi.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    
+   // tabBarController = [[UITabBarController alloc]init];
+   //tabBarController.delegate = self;
+   // tabBarController.tabBar.backgroundColor = [UIColor clearColor];
+   // UIViewController * view1 = [[UIViewController alloc]init];
+    //tabBarController.viewControllers = [NSArray arrayWithObjects:ContentsNavi,view1,nil];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = ContentsNavi;

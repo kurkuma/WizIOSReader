@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface Cell : UITableViewCell
+ @interface Cell : UITableViewCell
 {
+    BOOL imageExist;
+}
    // UIImageView *_ImageView;
-    }
+ 
 @property(nonatomic,strong)UIImageView *ImageView;
-@property(nonatomic,strong )UILabel *textLabel;
-@property(nonatomic,strong)UILabel *detailTextLabel;
-@property(nonatomic,strong)NSDate *modiDate;
-@property(nonatomic,strong)NSDateFormatter *dateForm;
-@property(nonatomic,strong)UILabel *modiLabel;
-@end
+@property(nonatomic,strong )UILabel *titleLabel;
+@property(nonatomic,strong)UILabel *abstractLabel;
+//@property(nonatomic,strong)UILabel *timeLabel;
+@property(nonatomic,assign)BOOL imageExist;
+//-(void)redifineSize:(float)width ;
+-(void)layoutOfCell:(BOOL)imageExist;
+ @end

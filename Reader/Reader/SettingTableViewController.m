@@ -13,11 +13,14 @@
 @end
 
 @implementation SettingTableViewController
+@synthesize changed;
+//@synthesize contTableView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
+//        self.contTableView = [[ContentsTableViewController alloc]init];
         // Custom initialization
     }
     return self;
@@ -27,6 +30,10 @@
 {
     [super viewDidLoad];
     self.title = @"设置";
+    changed =NO;
+    NSLog(@"whowhowhwohwhwow%d",TotalDocNum);
+   // contTableView = [[ContentsTableViewController alloc]init];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -62,8 +69,17 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
     
+    if(indexPath.row ==0)
+        cell.textLabel.text = @"更新最近5条";
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    if (indexPath.row == 1) {
+        cell.textLabel.text = @"更新全部";
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     // Configure the cell...
     
     return cell;
@@ -108,11 +124,36 @@
 }
 */
 
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
+    if (indexPath.row == 0) {
+        synDocNum = 5;
+         
+        [[tableView cellForRowAtIndexPath:indexPath]setAccessoryType:UITableViewCellAccessoryCheckmark];
+        
+        NSIndexPath *tempIndexPath = [NSIndexPath indexPathForRow:(indexPath.row +1)inSection:0];
+        
+        [[tableView cellForRowAtIndexPath:tempIndexPath]setAccessoryType:UITableViewCellAccessoryNone];
+        
+    }
+    if (indexPath.row ==1) {
+        changed = YES;
+        synDocNum = TotalDocNum;
+        NSLog(@"Syn:%d",synDocNum);
+         NSLog(@"TotalDocNum:%d",TotalDocNum);
+        [[tableView cellForRowAtIndexPath:indexPath]setAccessoryType:UITableViewCellAccessoryCheckmark];
+        NSIndexPath *tempIndexPath = [NSIndexPath indexPathForRow:(indexPath.row -1)inSection:0];
+        
+        [[tableView cellForRowAtIndexPath:tempIndexPath]setAccessoryType:UITableViewCellAccessoryNone];
+    }
+     // [self.navigationItem.backBarButtonItem select:@"LoadAsWant"];
+        //更新全部，要求
+    
+    
+         // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
@@ -121,5 +162,6 @@
      [detailViewController release];
      */
 }
+ 
 
 @end
