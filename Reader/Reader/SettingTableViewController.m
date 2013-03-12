@@ -73,7 +73,7 @@
     }
     
     if(indexPath.row ==0)
-        cell.textLabel.text = @"更新最近5条";
+        cell.textLabel.text = @"更新最近200条";
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     if (indexPath.row == 1) {
@@ -130,7 +130,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        synDocNum = 5;
+        synDocNum = 200;
          
         [[tableView cellForRowAtIndexPath:indexPath]setAccessoryType:UITableViewCellAccessoryCheckmark];
         

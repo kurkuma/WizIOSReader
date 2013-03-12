@@ -102,7 +102,7 @@ extern int TotalDocNum;@class WizAbstract;
    // self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     
     
-    synDocNum = 5;
+    synDocNum = 200;
      
     setTableView = [[SettingTableViewController alloc]init];
 
@@ -208,39 +208,54 @@ extern int TotalDocNum;@class WizAbstract;
   }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-        NSLog(@"***************************cellForRowAtIndext:");
-    static NSString *CellIdentifier = @"Cell";
-    NSLog(@"syndocAgain:%d",synDocNum);
-    
+  //  NSString *_text = [_objects objectAtIndex:indexPath.row];
     WizDocument * tempDocument = [titleArray objectAtIndex:indexPath.row];
-    //这里用到摘要，用到时候才会观察者模式发挥作用（发送消息）
-    
-    WizAbstract* abs = [[WizGlobalCache shareInstance] abstractForDoc:tempDocument.guid accountUserId:userId];
-    
-    
-    Cell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[Cell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-   
-    cell.imageView.image  = nil;
     
     NSDateFormatter *dateFor = [[NSDateFormatter alloc]init];
     
     [dateFor setDateFormat:@"yy-MM-dd"];
     
-    cell.abstractLabel.text = [dateFor stringFromDate:tempDocument.dateCreated];
+    NSString *tempString = [dateFor stringFromDate:tempDocument.dateCreated];
     
-    cell.abstractLabel.text = [cell.abstractLabel.text stringByAppendingString:@"    "];
+    tempString = [tempString stringByAppendingString:@"    "];
+    
+        NSLog(@"***************************cellForRowAtIndext:");
+    static NSString *CellIdentifier = @"Cell";
+    NSLog(@"syndocAgain:%d",synDocNum);
     
     
-    cell.titleLabel.text =  tempDocument.title;
     
 
+    //这里用到摘要，用到时候才会观察者模式发挥作用（发送消息）
+    
+    WizAbstract* abs = [[WizGlobalCache shareInstance] abstractForDoc:tempDocument.guid accountUserId:userId];
+    
+     
+    Cell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell)
+         {
+             cell.abstractLabel.textLayer.string = nil;
+         }
+        else
+        {
+            NSLog(@"————————————————————————————cell 为空，复用");
+           cell = [[Cell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+ 
+ 
+    
     cell.titleLabel.text =  tempDocument.title;
+
+    cell.imageView.image  = nil;
+    
+    cell.abstractLabel.text = tempString;
+    
+    [cell.abstractLabel setColor:[UIColor blueColor] fromIndex:0 length:11];
+    
     
     if (abs) {
+      cell.abstractLabel.text = @"";
+      //  cell.abstractLabel.textLayer.string = nil;
         if (!abs.image)
         {
             
@@ -251,32 +266,43 @@ extern int TotalDocNum;@class WizAbstract;
         else
             cell.imageExist = YES;
         
-        NSLog(@"有摘要");
-        cell.abstractLabel.text =[cell.abstractLabel.text stringByAppendingString:abs.text];
+            NSLog(@"有摘要");
+        
+       tempString = [tempString stringByAppendingString:abs.text];
+    
+       cell.abstractLabel.text = tempString;
+       // cell.abstractLabel.textLayer.string = tempString;
+        
+        [cell.abstractLabel setColor:[UIColor blueColor] fromIndex:0 length:11];
+        
+        [cell.abstractLabel setColor:[UIColor grayColor] fromIndex:12 length:tempString.length-12];
         
         cell.imageView.image = abs.image;
+        //[cell.abstractLabel setGradientEndColor:[UIColor grayColor]];
+
         
     }
-//    if (abstract) {
-//        cell.imageExist = YES;
-//        cell.abstractLabel.text = [cell.abstractLabel.text stringByAppendingString:abstract.text];
-//        cell.imageView.image = abstract.image;
-//    
-//    }
+ 
     else
+    {
         cell.imageExist = NO;
+        
+    }
     
    
     
     [cell layoutOfCell:cell.imageExist];
 
      
- 
-       
+//    exitString = cell.abstractLabel.text in;
+    
+
+    
       // Configure the cell...
     
     return cell;
 }
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -13,7 +13,9 @@
 #import "sqlite3.h"
 #import "WizDBManager.h"
 #import "SettingTableViewController.h"
+//#import "TTTAttributedLabel.h"
 static NSString *guid = @"b7738f8c-3932-11e2-a9b7-907ab51b66ae";
+static NSString *exitString = @"";//防止复用
 
 @interface ContentsTableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>
 {

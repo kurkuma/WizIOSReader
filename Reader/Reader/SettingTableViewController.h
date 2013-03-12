@@ -13,7 +13,7 @@
   int TotalDocNum;
 @interface SettingTableViewController : UITableViewController
 {
-   
+
     BOOL changed;//用于表示更新设置是否改变
 }
 @property(nonatomic,assign)BOOL changed;

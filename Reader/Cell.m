@@ -31,15 +31,13 @@
         
          titleLabel = [[UILabel alloc]init];
         
-         titleLabel.font = [UIFont systemFontOfSize:14];
+         titleLabel.font = [UIFont systemFontOfSize:15];
                  
         //添加摘要
         
-        abstractLabel = [[UILabel alloc]init];
+        abstractLabel = [[AttributedLabel alloc]init];
+         abstractLabel.backgroundColor = [UIColor clearColor];
         
-        abstractLabel.numberOfLines =2;
-        
-        abstractLabel.textColor = [UIColor grayColor];
         
         abstractLabel.adjustsFontSizeToFitWidth = YES;
         
@@ -48,6 +46,10 @@
         abstractLabel.textAlignment = NSTextAlignmentLeft;
         
         abstractLabel.font = [UIFont systemFontOfSize:12];
+         
+      //   CGRect r = CGRectMake(5,5 , self.abstractLabel.frame.size.width-15, self.abstractLabel.frame.size.height-5);
+//         [self.abstractLabel.text drawInRect:r withFont:[UIFont systemFontOfSize:12] lineBreakMode:UILineBreakModeWordWrap];
+//         self.abstractLabel.numberOfLines = 2;
         
         
          
@@ -56,12 +58,19 @@
          //[self layoutOfCell:imageExist];
                  
         
-        
+         [self addSubview:imageView];
+         
+         [self addSubview:titleLabel];
+         
+         [self  addSubview:abstractLabel];
+
          
          // Initialization code
     }
+    
     return self;
 }
+
 -(void)layoutOfCell:(BOOL)image{
     if (image)
     {
@@ -78,23 +87,22 @@
 
 
         [self.titleLabel setFrame:CGRectMake(10, 5,225, 20)];
-        [self.abstractLabel setFrame:CGRectMake(10,25, 225, 45)];
-        [self addSubview:imageView];
+        [self.abstractLabel setFrame:CGRectMake(10,35, 225, 45)];
 
       }
     else
     {
         [self.contentView setFrame:CGRectMake(10, 5,[UIScreen mainScreen].bounds.size.width,60)];
         NSLog(@"没有图片%f",[UIScreen mainScreen].bounds.size.width);
-        [self.titleLabel setFrame:CGRectMake(10, 5,[UIScreen mainScreen].bounds.size.width, 25)];
-        [self.abstractLabel setFrame:CGRectMake(10,25, [UIScreen mainScreen].bounds.size.width, 45)];
+        [self.titleLabel setFrame:CGRectMake(10, 5,[UIScreen mainScreen].bounds.size.width-10, 25)];
+        [self.abstractLabel setFrame:CGRectMake(10,35, [UIScreen mainScreen].bounds.size.width-10, 45)];
 
     }
-     
-    [self.contentView addSubview:titleLabel];
-    
-    [self.contentView addSubview:abstractLabel];
+    abstractLabel.textAlignment = NSTextAlignmentCenter;
+  //  abstractLabel.numberOfLines =2;
+   // [abstractLabel sizeToFit];
 
+   
 }
 
 //-(void)redifineSize:(float)width

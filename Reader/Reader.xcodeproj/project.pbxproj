@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7312B50E16E98C010033204B /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7312B50D16E98C010033204B /* CustomLabel.m */; };
 		732D5DA316D468E100D7FF4A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 732D5DA216D468E100D7FF4A /* UIKit.framework */; };
 		732D5DA516D468E100D7FF4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 732D5DA416D468E100D7FF4A /* Foundation.framework */; };
 		732D5DA716D468E100D7FF4A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 732D5DA616D468E100D7FF4A /* CoreGraphics.framework */; };
@@ -25,6 +24,8 @@
 		732D5DDA16D49FB200D7FF4A /* ReadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 732D5DD816D49FB200D7FF4A /* ReadViewController.xib */; };
 		732D5DDE16D4A46800D7FF4A /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 732D5DDC16D4A46800D7FF4A /* SettingTableViewController.m */; };
 		732D5DDF16D4A46800D7FF4A /* SettingTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 732D5DDD16D4A46800D7FF4A /* SettingTableViewController.xib */; };
+		7399D74816EDB076001C9184 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7399D74716EDB076001C9184 /* CoreText.framework */; };
+		7399D74F16EDBFE2001C9184 /* AttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7399D74E16EDBFE2001C9184 /* AttributedLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		73E7F6C816E71A0600F797B4 /* Read.js in Resources */ = {isa = PBXBuildFile; fileRef = 73D4FE5816E5DD4E00AEEB65 /* Read.js */; };
 		73F6874B16D4B84800EDC47A /* WizSettingsDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F686B216D4B84800EDC47A /* WizSettingsDataBase.m */; };
 		73F6874C16D4B84800EDC47A /* WizSettingsDataBaseModel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73F686B316D4B84800EDC47A /* WizSettingsDataBaseModel.plist */; };
@@ -107,8 +108,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7312B50C16E98C010033204B /* CustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabel.h; sourceTree = "<group>"; };
-		7312B50D16E98C010033204B /* CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabel.m; sourceTree = "<group>"; };
 		732D5D9E16D468E100D7FF4A /* Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		732D5DA216D468E100D7FF4A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		732D5DA416D468E100D7FF4A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -135,6 +134,9 @@
 		732D5DDB16D4A46800D7FF4A /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
 		732D5DDC16D4A46800D7FF4A /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		732D5DDD16D4A46800D7FF4A /* SettingTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewController.xib; sourceTree = "<group>"; };
+		7399D74716EDB076001C9184 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		7399D74D16EDBFE2001C9184 /* AttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedLabel.h; sourceTree = "<group>"; };
+		7399D74E16EDBFE2001C9184 /* AttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedLabel.m; sourceTree = "<group>"; };
 		73D4FE5816E5DD4E00AEEB65 /* Read.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Read.js; path = ../Read.js; sourceTree = "<group>"; };
 		73F686B116D4B84800EDC47A /* WizSettingsDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizSettingsDataBase.h; sourceTree = "<group>"; };
 		73F686B216D4B84800EDC47A /* WizSettingsDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizSettingsDataBase.m; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7399D74816EDB076001C9184 /* CoreText.framework in Frameworks */,
 				732D5DA716D468E100D7FF4A /* CoreGraphics.framework in Frameworks */,
 				73F6879E16D4BEFF00EDC47A /* AudioToolbox.framework in Frameworks */,
 				73F6879C16D4BEF200EDC47A /* libsqlite3.0.dylib in Frameworks */,
@@ -309,8 +312,8 @@
 		7312B50A16E98BAA0033204B /* Custom Label */ = {
 			isa = PBXGroup;
 			children = (
-				7312B50C16E98C010033204B /* CustomLabel.h */,
-				7312B50D16E98C010033204B /* CustomLabel.m */,
+				7399D74D16EDBFE2001C9184 /* AttributedLabel.h */,
+				7399D74E16EDBFE2001C9184 /* AttributedLabel.m */,
 			);
 			name = "Custom Label";
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 		732D5DA116D468E100D7FF4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7399D74716EDB076001C9184 /* CoreText.framework */,
 				73F6879D16D4BEFF00EDC47A /* AudioToolbox.framework */,
 				73F6879B16D4BEF200EDC47A /* libsqlite3.0.dylib */,
 				73F6879916D4BEDD00EDC47A /* libz.dylib */,
@@ -855,7 +859,7 @@
 				73F6878A16D4B84800EDC47A /* WizGlobals.m in Sources */,
 				73F6878B16D4B84800EDC47A /* WizLogger.m in Sources */,
 				AC35665016D85C1500E1517A /* BWStatusBarOverlay.m in Sources */,
-				7312B50E16E98C010033204B /* CustomLabel.m in Sources */,
+				7399D74F16EDBFE2001C9184 /* AttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import "CustomLabel.h"
+//#import "TTTAttributedLabel.h"
+#import"AttributedLabel.h"
+
  @interface Cell : UITableViewCell
 {
     BOOL imageExist;
@@ -15,7 +19,7 @@
  
 @property(nonatomic,strong)UIImageView *ImageView;
 @property(nonatomic,strong )UILabel *titleLabel;
-@property(nonatomic,strong)UILabel *abstractLabel;
+@property(nonatomic,strong)AttributedLabel *abstractLabel;
 //@property(nonatomic,strong)UILabel *timeLabel;
 @property(nonatomic,assign)BOOL imageExist;
 //-(void)redifineSize:(float)width ;
